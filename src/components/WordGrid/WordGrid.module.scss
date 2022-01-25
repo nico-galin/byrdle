@@ -1,20 +1,27 @@
 $width: min(100vw, 600px);
 $gap: 10px;
+$keyPadding: 12px;
 $keyGap: 5px;
-$keyWidth: calc(($width - 9*$keyGap)/10);
+$maxGridHeight: calc(100vh - ($keyPadding*2 + $keyGap)*3 - 55px);
+$keySize: calc(($width - 9*$keyGap)/10);
 
 $correct-color: #00de64;
 $close-color: #fcba03;
 
 .container {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .row {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     margin-bottom: $gap;
+    > :not(:last-child) {
+        margin-right: $gap;
+    }
 }
 
 .square {
@@ -38,8 +45,8 @@ $close-color: #fcba03;
 }
 .square__5 {
     @extend .square;
-    width: calc(($width - 40px - 4*$gap)/5);
-    height: calc(($width - 40px - 4*$gap)/5);
+    width: min(calc($maxGridHeight - 40px - 5*$gap)/8, calc(($width - 40px - 4*$gap)/5));
+    height: min(calc($maxGridHeight - 40px - 5*$gap)/8, calc(($width - 40px - 4*$gap)/5));
 }
 
 .square__6 {
@@ -60,7 +67,7 @@ $close-color: #fcba03;
     text-transform: uppercase;
     > :last-child {
         > :first-child, :last-child {
-            width: calc($keyWidth*1.5)
+            width: calc($keySize*1.5)
         }
     }
 }
@@ -71,11 +78,11 @@ $close-color: #fcba03;
     justify-content: center;
     margin-bottom: $keyGap;
     > * {
-        padding: 15px 0;
-        width: $keyWidth;
+        padding: $keyPadding 0;
+        width: $keySize;
         text-align: center;
         border-radius: 4px;
-        background-color: #a3a3a3
+        background-color: #a3a3a3;
     }
 
     > :not(:last-child) {

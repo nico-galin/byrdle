@@ -39,12 +39,14 @@ const WordGrid = ({ word }) => {
     const getKeyClass = (key) => {
         if (finished) return styles.key__disabled;
         if (guesses.length === 0) return null;
+        let disabled = false;
         for (let i = 0; i < guesses.length; i++) {
             for (let j = 0; j < guesses[0].length; j++) {
-                if (guesses[i][j] === key && responseValues[i][j] === 0) return styles.key__disabled;
+                if (guesses[i][j] === key && responseValues[i][j] === 0) disabled = true;
                 if (guesses[i][j] === key && responseValues[i][j] === 2) return styles.key__correct;
             }
         }
+        if (disabled) return styles.key__disabled
         return null;
     }
 

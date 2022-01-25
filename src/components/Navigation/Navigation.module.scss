@@ -4,11 +4,12 @@
 
 .topNav__container {
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 55px;
+    background-color: #1c1c1c;
 }
 
 .topNav {
