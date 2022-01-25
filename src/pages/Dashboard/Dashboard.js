@@ -27,14 +27,12 @@ const Dashboard = () => {
   }, [user, loading]);
   return (
     <div className={styles.dashboard}>
-       <div className={styles.dashboard__container}>
         Logged in as
          <div>{name}</div>
          <div>{user?.email}</div>
          <button className={styles.dashboard__btn} onClick={signOut}>
           Logout
          </button>
-       </div>
      </div>
   );
 }

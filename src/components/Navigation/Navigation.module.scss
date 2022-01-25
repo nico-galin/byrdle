@@ -23,7 +23,7 @@
 }
 
 .fullpageNav__container {
-    position: fixed;
+    position: absolute;
     background-color: antiquewhite;
     display: flex;
     opacity: 1;
@@ -35,12 +35,12 @@
     margin-top: 55px;
     height: calc(100vh - 55px);
     background-color: #1c1c1c;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .fullpageNav__hidden {
     opacity: 0;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
     pointer-events: none;
 }
 
@@ -64,4 +64,6 @@
     color: white;
     text-decoration: none;
     font-size: larger;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }

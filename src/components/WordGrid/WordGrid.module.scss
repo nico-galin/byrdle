@@ -1,0 +1,97 @@
+$width: min(100vw, 600px);
+$gap: 10px;
+$keyGap: 5px;
+$keyWidth: calc(($width - 9*$keyGap)/10);
+
+$correct-color: #00de64;
+$close-color: #fcba03;
+
+.container {
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: $gap;
+}
+
+.square {
+    display: flex;
+    background-color: #262626;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: calc(0.08 * $width);
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    > div {
+        margin: auto;
+    }
+}
+
+.square__4 {
+    @extend .square;
+    width: calc(($width - 40px - 3*$gap)/4);
+    height: calc(($width - 40px - 3*$gap)/4);
+}
+.square__5 {
+    @extend .square;
+    width: calc(($width - 40px - 4*$gap)/5);
+    height: calc(($width - 40px - 4*$gap)/5);
+}
+
+.square__6 {
+    @extend .square;
+    width: calc(($width - 40px - 5*$gap)/6);
+    height: calc(($width - 40px - 5*$gap)/6);
+}
+
+.square__correct {
+    background-color: $correct-color;
+}
+
+.square__close {
+    background-color: $close-color;
+}
+
+.keyboard {
+    text-transform: uppercase;
+    > :last-child {
+        > :first-child, :last-child {
+            width: calc($keyWidth*1.5)
+        }
+    }
+}
+
+.keyboardRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: $keyGap;
+    > * {
+        padding: 15px 0;
+        width: $keyWidth;
+        text-align: center;
+        border-radius: 4px;
+        background-color: #a3a3a3
+    }
+
+    > :not(:last-child) {
+        margin-right: $keyGap;
+    }
+}
+
+.key__disabled {
+    background-color: #262626;
+    pointer-events: none;
+}
+
+.key__correct {
+    background-color: $correct-color;
+}
+
+.key__close {
+    background-color: $close-color;
+}

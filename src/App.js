@@ -10,19 +10,21 @@ import Dashboard from './pages/Dashboard/Dashboard';
 function App() {
   return (
     <div className={styles.app}>
-      <HashRouter>
-          <Navigation />
-          <div className={styles.appContent}>
-            <Routes>
-                <Route exact path="/" element={<Home />}/>
-                {/*<Route path="/portfolio/*" element={<Portfolio />} />*/}
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/reset" element={<Reset />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-            </Routes>
-          </div>
-      </HashRouter>
+      <div className={styles.appContainer}>
+        <HashRouter>
+            <Navigation />
+            <div className={styles.appContent}>
+              <Routes>
+                  <Route exact path="/" element={<Home />}/>
+                  {/*<Route path="/portfolio/*" element={<Portfolio />} />*/}
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/reset" element={<Reset />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+              </Routes>
+            </div>
+        </HashRouter>
+      </div>
     </div>
   );
 }
