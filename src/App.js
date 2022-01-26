@@ -6,24 +6,27 @@ import Home from './pages/Home/Home';
 import Register from './pages/Register/Register';
 import Reset from './pages/Reset/Reset';
 import Dashboard from './pages/Dashboard/Dashboard';
+import { WordProvider } from './contexts/wordData';
 
 function App() {
   return (
     <div className={styles.app}>
       <div className={styles.appContainer}>
-        <HashRouter>
-            <Navigation />
-            <div className={styles.appContent}>
-              <Routes>
-                  <Route exact path="/" element={<Home />}/>
-                  {/*<Route path="/portfolio/*" element={<Portfolio />} />*/}
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/reset" element={<Reset />} />
-                  <Route path="/dashboard" element={<Dashboard />} />
-              </Routes>
-            </div>
-        </HashRouter>
+        <WordProvider>
+          <HashRouter>
+              <Navigation />
+              <div className={styles.appContent}>
+                <Routes>
+                    <Route path="/*" element={<Home />}/>
+                    {/*<Route path="/portfolio/*" element={<Portfolio />} />*/}
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/reset" element={<Reset />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                </Routes>
+              </div>
+          </HashRouter>
+        </WordProvider>
       </div>
     </div>
   );

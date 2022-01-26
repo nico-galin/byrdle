@@ -14,7 +14,8 @@ import {
     getDocs,
     collection,
     where,
-    addDoc
+    addDoc,
+    getDoc
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -88,6 +89,24 @@ const signOut = () => {
     fbSignOut(auth);
 };
 
+const getTodaysWords = async () => {
+    try {
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        const yyyy = today.getFullYear();
+        const q = query(collection(db, "words"), where("date", "==", `${mm}${dd}${yyyy}`));
+        const docs = await getDocs(q);
+        const data = [];
+        docs.forEach(doc => {
+            data.push(doc.data());
+        })
+        return data[0];
+      } catch (err) {
+        console.error(err);
+      }
+}
+
 export {
     auth,
     db,
@@ -96,4 +115,5 @@ export {
     registerWithEmailAndPassword,
     sendPasswordReset,
     signOut,
+    getTodaysWords
   };

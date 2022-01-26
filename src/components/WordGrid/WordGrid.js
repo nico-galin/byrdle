@@ -66,15 +66,15 @@ const WordGrid = ({ word }) => {
         <div className={styles.container}>
             <div className={styles.grid}>
                 {[...Array(tries)].map((_, rowInd) => (
-                    <div className={styles.row}>
+                    <div className={styles.row} key={rowInd}>
                         {[...Array(len)].map((_, letterInd) => {
                             if (rowInd === guesses.length) return (
-                                <div className={sqClass}>
+                                <div className={sqClass} key={letterInd}>
                                     <div>{!!currentGuess[letterInd] ? currentGuess[letterInd] : null}</div>
                                 </div>
                             )
                             return (
-                                <div className={`${sqClass} ${!!responseValues[rowInd] && responseValues[rowInd][letterInd] === 2 ? styles.square__correct : null} ${!!responseValues[rowInd] && responseValues[rowInd][letterInd] === 1 ? styles.square__close : null}`}>
+                                <div key={letterInd} className={`${sqClass} ${!!responseValues[rowInd] && responseValues[rowInd][letterInd] === 2 ? styles.square__correct : null} ${!!responseValues[rowInd] && responseValues[rowInd][letterInd] === 1 ? styles.square__close : null}`}>
                                     <div>{!!guesses[rowInd] ? guesses[rowInd][letterInd] : null}</div>
                                 </div>
                             )
@@ -107,7 +107,7 @@ const WordGrid = ({ word }) => {
                     <div className={getKeyClass("l")} onClick={() => updateGuess("l")}>l</div>
                 </div>
                 <div className={styles.keyboardRow}>
-                    <div className={finished ? styles.key__disabled : null} onClick={() => updateGuess(null, true, false)}>Enter</div>
+                    <div className={finished ? styles.key__disabled : null} onClick={() => updateGuess(null, true, false)}>Go</div>
                     <div className={getKeyClass("z")} onClick={() => updateGuess("z")}>z</div>
                     <div className={getKeyClass("x")} onClick={() => updateGuess("x")}>x</div>
                     <div className={getKeyClass("c")} onClick={() => updateGuess("c")}>c</div>

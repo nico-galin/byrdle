@@ -1,0 +1,47 @@
+.yourCard {
+    background-color: #262626;
+    border-radius: 10px;
+    padding: 0 20px 20px 20px;
+    text-align: center;
+}
+
+.gameCardsContainer {
+    > :not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+
+.gameCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #393939;
+    border-radius: 10px;
+    padding: 12px 25px;
+}
+
+.header {
+    padding: 40px 0;
+}
+
+.progress {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #a5a5a5;
+    > :nth-child(2) {
+        margin: 0 10px;
+    }
+}
+
+.date {
+    font-size: min(10vw, 50px);
+    margin-bottom: 10px;
+}
+
+.line {
+    width: 20vw;
+    height: 2px;
+    background-color: #a5a5a5;
+}

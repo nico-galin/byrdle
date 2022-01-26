@@ -1,5 +1,5 @@
 $width: min(100vw, 600px);
-$gap: 10px;
+$gap: min(10px, 2vw);
 $keyPadding: 12px;
 $keyGap: 5px;
 $maxGridHeight: calc(100vh - ($keyPadding*2 + $keyGap)*3 - 55px);
@@ -40,19 +40,25 @@ $close-color: #fcba03;
 
 .square__4 {
     @extend .square;
-    width: calc(($width - 40px - 3*$gap)/4);
-    height: calc(($width - 40px - 3*$gap)/4);
+    $heightLimitation: calc($maxGridHeight - 40px - 3*$gap)/5;
+    $widthLimitation: calc(($width - 40px - 3*$gap)/4);
+    width: min($heightLimitation, $widthLimitation);
+    height: min($heightLimitation, $widthLimitation);
 }
 .square__5 {
     @extend .square;
-    width: min(calc($maxGridHeight - 40px - 5*$gap)/8, calc(($width - 40px - 4*$gap)/5));
-    height: min(calc($maxGridHeight - 40px - 5*$gap)/8, calc(($width - 40px - 4*$gap)/5));
+    $heightLimitation: calc($maxGridHeight - 40px - 5*$gap)/8;
+    $widthLimitation: calc(($width - 40px - 4*$gap)/5);
+    width: min($heightLimitation, $widthLimitation);
+    height: min($heightLimitation, $widthLimitation);
 }
 
 .square__6 {
     @extend .square;
-    width: calc(($width - 40px - 5*$gap)/6);
-    height: calc(($width - 40px - 5*$gap)/6);
+    $heightLimitation: calc($maxGridHeight - 40px - 6*$gap)/9;
+    $widthLimitation: calc(($width - 40px - 5*$gap)/6);
+    width: min($heightLimitation, $widthLimitation);
+    height: min($heightLimitation, $widthLimitation);
 }
 
 .square__correct {

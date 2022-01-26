@@ -1,12 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
+import { getTodaysWords } from '../services/firebase';
 
-export const useWordData = () => {
+export const WordContext = createContext();
 
+export const WordProvider = ({ children }) => {
   const [words, setWords] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setWords()
-  }, []);
+    const init = async () => {
+      let newWords = await getTodaysWords();
+      setWords(newWords);
+      setLoading(false);
+    }
+    init();
+  }, [])
 
-  return words;
+  return (
+    <WordContext.Provider
+      value={{
+        words,
+        loading
+      }}
+    >
+      {children}
+    </WordContext.Provider>
+  );
+};
+
+export const useWords = () => {
+  return useContext(WordContext);
 }
