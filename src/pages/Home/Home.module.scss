@@ -20,6 +20,10 @@
     padding: 12px 25px;
 }
 
+.gameCard:hover {
+    cursor: pointer;
+}
+
 .header {
     padding: 40px 0;
 }
@@ -41,7 +45,8 @@
 }
 
 .line {
-    width: 20vw;
+    flex:1;
+    max-width: 20vw;
     height: 2px;
     background-color: #a5a5a5;
 }

@@ -8,6 +8,12 @@ $keySize: calc(($width - 9*$keyGap)/10);
 $correct-color: #00de64;
 $close-color: #fcba03;
 
+@keyframes bump {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.05);}
+    100% {transform: scale(1);}
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -40,14 +46,14 @@ $close-color: #fcba03;
 
 .square__4 {
     @extend .square;
-    $heightLimitation: calc($maxGridHeight - 40px - 3*$gap)/5;
+    $heightLimitation: calc($maxGridHeight - 40px - 4*$gap)/6;
     $widthLimitation: calc(($width - 40px - 3*$gap)/4);
     width: min($heightLimitation, $widthLimitation);
     height: min($heightLimitation, $widthLimitation);
 }
 .square__5 {
     @extend .square;
-    $heightLimitation: calc($maxGridHeight - 40px - 5*$gap)/8;
+    $heightLimitation: calc($maxGridHeight - 40px - 5*$gap)/7;
     $widthLimitation: calc(($width - 40px - 4*$gap)/5);
     width: min($heightLimitation, $widthLimitation);
     height: min($heightLimitation, $widthLimitation);
@@ -55,7 +61,7 @@ $close-color: #fcba03;
 
 .square__6 {
     @extend .square;
-    $heightLimitation: calc($maxGridHeight - 40px - 6*$gap)/9;
+    $heightLimitation: calc($maxGridHeight - 40px - 6*$gap)/8;
     $widthLimitation: calc(($width - 40px - 5*$gap)/6);
     width: min($heightLimitation, $widthLimitation);
     height: min($heightLimitation, $widthLimitation);
@@ -63,10 +69,12 @@ $close-color: #fcba03;
 
 .square__correct {
     background-color: $correct-color;
+    animation: 0.3s bump;
 }
 
 .square__close {
     background-color: $close-color;
+    animation: 0.3s bump;
 }
 
 .keyboard {
@@ -89,6 +97,10 @@ $close-color: #fcba03;
         text-align: center;
         border-radius: 4px;
         background-color: #a3a3a3;
+    }
+
+    > *:hover {
+        cursor: pointer;
     }
 
     > :not(:last-child) {

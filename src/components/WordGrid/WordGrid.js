@@ -8,13 +8,13 @@ const WordGrid = ({ word }) => {
     let tries = 6;
     let sqClass = styles.square__5;
     if (len === 4) {
-        tries = 4;
+        tries = 5;
         sqClass = styles.square__4;
     } else if (len === 6) {
         tries = 7;
         sqClass = styles.square__6;
     }
-    const finished = guesses.length === tries;
+    const finished = guesses.length === tries || (!!guesses[guesses.length - 1] && guesses[guesses.length - 1].toLowerCase() === word.toLowerCase());
     let responseValues = [];
     for (let i = 0; i < guesses.length; i++) {
         let lettersLeft = word;
