@@ -39,14 +39,21 @@ const WordGrid = ({ word }) => {
     const getKeyClass = (key) => {
         if (finished) return styles.key__disabled;
         if (guesses.length === 0) return null;
-        let disabled = false;
+        let curReponseValues = [];
+        let count = 0;
         for (let i = 0; i < guesses.length; i++) {
             for (let j = 0; j < guesses[0].length; j++) {
-                if (guesses[i][j] === key && responseValues[i][j] === 0) disabled = true;
-                if (guesses[i][j] === key && responseValues[i][j] === 2) return styles.key__correct;
+                if (guesses[i][j] === key) {
+                    curReponseValues.push(responseValues[i][j]);
+                    count++;
+                }
             }
         }
-        if (disabled) return styles.key__disabled
+        if (curReponseValues.includes(2)) {
+            return styles.key__correct;
+        } else if (count > 0 && curReponseValues.reduce((sum, x) => sum + x) === 0) {
+            return styles.key__disabled;
+        }
         return null;
     }
 
@@ -74,6 +81,7 @@ const WordGrid = ({ word }) => {
 
     return (
         <div className={styles.container}>
+            <div className={styles.notification}>Invalid Word</div>
             <div className={styles.grid}>
                 {[...Array(tries)].map((_, rowInd) => (
                     <div className={styles.row} key={rowInd}>

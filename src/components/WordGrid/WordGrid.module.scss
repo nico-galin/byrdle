@@ -120,3 +120,18 @@ $close-color: #fcba03;
 .key__close {
     background-color: $close-color;
 }
+
+.notification {
+    position: absolute;
+    right: -100%;
+    top: 30px;
+    padding: 10px;
+    background-color: #262626;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px 0 0 10px;
+    transition: 1s ease-in-out;
+}
+
+.notification__visible {
+    right: 0;
+}
