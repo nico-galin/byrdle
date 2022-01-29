@@ -50,10 +50,20 @@ const WordGrid = ({ word }) => {
         return null;
     }
 
-    const updateGuess = (letter = "", enter = false, del = false) => {
+    const guessValid = async (guess) => {
+        if (!guess) return false;
+        if (guess.trim() === "") return false;
+        if (guess.length !== word.length) return false;
+        return true;
+    }
+
+    const updateGuess = async (letter = "", enter = false, del = false) => {
+        const valid = await guessValid(currentGuess)
         if (enter) {
-            setGuesses(prev => [...prev, currentGuess]);
-            setCurrentGuess("")
+            if (valid) {
+                setGuesses(prev => [...prev, currentGuess]);
+                setCurrentGuess("")
+            }
             return;
         } else if (del) {
             setCurrentGuess(prev => prev.slice(0, prev.length - 1));
