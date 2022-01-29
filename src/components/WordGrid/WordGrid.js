@@ -61,6 +61,8 @@ const WordGrid = ({ word }) => {
         if (!guess) return false;
         if (guess.trim() === "") return false;
         if (guess.length !== word.length) return false;
+        const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`);
+        if (res.status === 404) return false
         return true;
     }
 
