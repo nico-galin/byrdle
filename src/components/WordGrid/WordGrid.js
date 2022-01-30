@@ -58,12 +58,16 @@ const WordGrid = ({ word }) => {
     }
 
     const guessValid = async (guess) => {
-        if (!guess) return false;
-        if (guess.trim() === "") return false;
-        if (guess.length !== word.length) return false;
-        const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`);
-        if (res.status === 404) return false
-        return true;
+        try {
+            if (!guess) return false;
+            if (guess.trim() === "") return false;
+            if (guess.length !== word.length) return false;
+            const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`);
+            if (res.status === 404) return false;
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
 
     const updateGuess = async (letter = "", enter = false, del = false) => {
