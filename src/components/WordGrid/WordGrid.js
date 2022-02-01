@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import * as four_letter_words from '../../data/four_letter_words.json';
-import * as five_letter_words from '../../data/four_letter_words.json';
-import * as six_letter_words from '../../data/six_letter_words.json';
+import { validWord } from '../../services/utils';
 import styles from './WordGrid.module.scss';
 
 const WordGrid = ({ word }) => {
@@ -65,10 +63,7 @@ const WordGrid = ({ word }) => {
             if (!guess) return false;
             if (guess.trim() === "") return false;
             if (guess.length !== word.length) return false;
-            if (guess.length === 4 && !four_letter_words[guess]) return false;
-            if (guess.length === 5 && !five_letter_words[guess]) return false;
-            if (guess.length === 6 && !six_letter_words[guess]) return false;
-            return true;
+            return validWord(guess);
         } catch (e) {
             return false;
         }
