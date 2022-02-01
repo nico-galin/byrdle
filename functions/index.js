@@ -1,4 +1,4 @@
-import fetch from 'cross-fetch';
+const fetch = require('cross-fetch');
 const functions = require("firebase-functions");
 const admin = require('firebase-admin');
 
