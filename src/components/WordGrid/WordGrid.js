@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import four_letter_words from '../../data/four_letter_words';
+import five_letter_words from '../../data/four_letter_words';
+import six_letter_words from '../../data/six_letter_words';
 import styles from './WordGrid.module.scss';
 
 const WordGrid = ({ word }) => {
@@ -62,8 +65,9 @@ const WordGrid = ({ word }) => {
             if (!guess) return false;
             if (guess.trim() === "") return false;
             if (guess.length !== word.length) return false;
-            //const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`, { mode: 'no-cors' });
-            //if (res.status === 404) return false;
+            if (guess.length === 4 && !four_letter_words.includes(guess)) return false;
+            if (guess.length === 5 && !five_letter_words.includes(guess)) return false;
+            if (guess.length === 6 && !six_letter_words.includes(guess)) return false;
             return true;
         } catch (e) {
             return false;
