@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/byrdle/static/css/main.d58f6c5d.css",
-    "main.js": "/byrdle/static/js/main.f8871aa8.js",
+    "main.css": "/byrdle/static/css/main.983cbacc.css",
+    "main.js": "/byrdle/static/js/main.117dc5ea.js",
     "static/js/787.0d12947f.chunk.js": "/byrdle/static/js/787.0d12947f.chunk.js",
     "index.html": "/byrdle/index.html",
-    "main.d58f6c5d.css.map": "/byrdle/static/css/main.d58f6c5d.css.map",
-    "main.f8871aa8.js.map": "/byrdle/static/js/main.f8871aa8.js.map",
+    "main.983cbacc.css.map": "/byrdle/static/css/main.983cbacc.css.map",
+    "main.117dc5ea.js.map": "/byrdle/static/js/main.117dc5ea.js.map",
     "787.0d12947f.chunk.js.map": "/byrdle/static/js/787.0d12947f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d58f6c5d.css",
-    "static/js/main.f8871aa8.js"
+    "static/css/main.983cbacc.css",
+    "static/js/main.117dc5ea.js"
   ]
 }
