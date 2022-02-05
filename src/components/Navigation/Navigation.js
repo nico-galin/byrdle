@@ -83,7 +83,7 @@ const Navigation = () => {
                     :
                         <li className={styles.link} onClick={() => goTo("/login")}>Sign In</li>
                     }
-                    <img className={styles.watermark} src={watermark} alt={'creator'} width={150} onClick={() => window.open('https://nico-galin.github.io', '_blank')}/>
+                    <img className={styles.watermark} src={watermark} alt={'creator'} width={130} onClick={() => window.open('https://nico-galin.github.io', '_blank')}/>
                 </ul>
             </div>
         </>
