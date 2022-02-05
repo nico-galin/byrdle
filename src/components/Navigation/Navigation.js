@@ -5,6 +5,7 @@ import { useWindowDimensions } from '../../contexts/windowDimensions';
 import { auth, signOut } from "../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import MenuIcon from '../MenuIcon/MenuIcon';
+import watermark from "../../assets/watermark_white.png"
 
 const Navigation = () => {
     const navigate = useNavigate();
@@ -27,6 +28,7 @@ const Navigation = () => {
         default:
             backBtnHidden = true;
     }
+    if (fullscreenNavOpen) backBtnHidden = true;
     if (location === "4-letters") {
 
     }
@@ -81,6 +83,7 @@ const Navigation = () => {
                     :
                         <li className={styles.link} onClick={() => goTo("/login")}>Sign In</li>
                     }
+                    <img className={styles.watermark} src={watermark} alt={'creator'} width={150} onClick={() => window.open('https://nico-galin.github.io', '_blank')}/>
                 </ul>
             </div>
         </>

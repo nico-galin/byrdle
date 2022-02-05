@@ -122,10 +122,10 @@ $close-color: #fcba03;
 }
 
 .notification {
-    position: absolute;
+    position: fixed;
     right: -100%;
-    top: 30px;
-    padding: 10px;
+    top: 120px;
+    padding: 10px 20px;
     background-color: #262626;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
     border-radius: 10px 0 0 10px;
