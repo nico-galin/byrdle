@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocalData } from '../../contexts/localData';
 import { validWord } from '../../services/utils';
 import styles from './WordGrid.module.scss';
 
 const WordGrid = ({ word }) => {
+    const { todayData, updateProgress, loading } = useLocalData();
     const [currentGuess, setCurrentGuess] = useState("");
-    const [guesses, setGuesses] = useState([]);
     const len = word.trim().length;
+    let guesses = !!todayData && !!todayData[len] && !!todayData[len].guesses ? todayData[len].guesses : [];
+
     let tries = 6;
     let sqClass = styles.square__5;
     if (len === 4) {
@@ -15,26 +18,29 @@ const WordGrid = ({ word }) => {
         tries = 7;
         sqClass = styles.square__6;
     }
-    const finished = guesses.length === tries || (!!guesses[guesses.length - 1] && guesses[guesses.length - 1].toLowerCase() === word.toLowerCase());
+    let finished;
     let responseValues = [];
-    for (let i = 0; i < guesses.length; i++) {
-        let lettersLeft = word;
-        let guessLettersLeft = guesses[i];
-        let response = [...Array(len).fill(0)]
-        for (let j = 0; j < word.length; j++) {
-            if (guesses[i][j] === word[j]) {
-                lettersLeft = lettersLeft.replace(guesses[i][j], '');
-                guessLettersLeft = guessLettersLeft.replace(guesses[i][j], '');
-                response[j] = 2;
+    if (!!guesses) {
+        finished = guesses.length === tries || (!!guesses[guesses.length - 1] && guesses[guesses.length - 1].toLowerCase() === word.toLowerCase());
+        for (let i = 0; i < guesses.length; i++) {
+            let lettersLeft = word;
+            let guessLettersLeft = guesses[i];
+            let response = [...Array(len).fill(0)]
+            for (let j = 0; j < word.length; j++) {
+                if (guesses[i][j] === word[j]) {
+                    lettersLeft = lettersLeft.replace(guesses[i][j], '');
+                    guessLettersLeft = guessLettersLeft.replace(guesses[i][j], '');
+                    response[j] = 2;
+                }
             }
-        }
-        for (let j = 0; j < guesses[i].length; j++) {
-            if (response[j] !== 2 && lettersLeft.includes(guesses[i][j])) {
-                lettersLeft = lettersLeft.replace(guesses[i][j], '');
-                response[j] = 1;
+            for (let j = 0; j < guesses[i].length; j++) {
+                if (response[j] !== 2 && lettersLeft.includes(guesses[i][j])) {
+                    lettersLeft = lettersLeft.replace(guesses[i][j], '');
+                    response[j] = 1;
+                }
             }
+            responseValues.push(response)
         }
-        responseValues.push(response)
     }
 
     const getKeyClass = (key) => {
@@ -73,8 +79,10 @@ const WordGrid = ({ word }) => {
         const valid = await guessValid(currentGuess)
         if (enter) {
             if (valid) {
-                setGuesses(prev => [...prev, currentGuess]);
-                setCurrentGuess("")
+                const newGuesses = [...guesses, currentGuess]
+                updateProgress(len, newGuesses, currentGuess.toLowerCase() === word.toLowerCase());
+                setCurrentGuess("");
+
             }
             return;
         } else if (del) {

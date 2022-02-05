@@ -1,5 +1,6 @@
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, createContext, useContext, useEffect } from 'react';
 import { getTodaysWords } from '../services/firebase';
+import { useLocalData } from './localData';
 
 export const WordContext = createContext();
 

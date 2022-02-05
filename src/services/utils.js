@@ -24,6 +24,15 @@ const validWord = (word) => {
     return getWordHelper(obj, word, word, 3);
 }
 
+const getTimestamp = () => {
+    return new Date().toLocaleString("en-US", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        timeZone: "America/Los_Angeles"}).replaceAll("/", "");
+}
+
 export {
-    validWord
+    validWord,
+    getTimestamp
 }
