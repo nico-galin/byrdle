@@ -136,7 +136,7 @@ const WordGrid = ({ len }) => {
                 </div>
             }
             <div className={styles.notification}>Invalid Word</div>
-            <div className={!!todayData[len] && todayData[len].finished ? styles.gameContent_finished : null}>
+            <div className={finished ? styles.gameContent_finished : null}>
                 <div className={styles.grid}>
                     {[...Array(tries)].map((_, rowInd) => (
                         <div className={styles.row} key={rowInd}>
