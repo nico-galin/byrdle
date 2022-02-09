@@ -21,13 +21,9 @@
 }
 
 .gameCard__finished {
-    display: flex;
+    @extend .gameCard;
     position: relative;
-    flex-direction: row;
-    justify-content: space-between;
     background-color: #00af4f;
-    border-radius: 10px;
-    padding: 12px 25px;
 }
 
 .gameCard:hover {

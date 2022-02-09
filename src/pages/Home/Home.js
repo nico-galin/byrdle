@@ -23,6 +23,10 @@ const Home = () => {
     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     const yyyy = today.getFullYear();
     const { todayData, loading } = useLocalData();
+    let complete = 0;
+    if (!!todayData && !!todayData[4] && todayData[4].finished) complete += 1;
+    if (!!todayData && !!todayData[5] && todayData[5].finished) complete += 1;
+    if (!!todayData && !!todayData[6] && todayData[6].finished) complete += 1;
     return (
         <div>
             <div className={styles.yourCard}>
@@ -30,7 +34,7 @@ const Home = () => {
                     <div className={styles.date}>{mm}.{dd}.{yyyy}</div>
                     <div className={styles.progress}>
                         <div className={styles.line} />
-                        <div>0 / 3</div>
+                        <div>{complete} / 3</div>
                         <div className={styles.line} />
                     </div>
                 </div>
