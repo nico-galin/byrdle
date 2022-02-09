@@ -135,3 +135,55 @@ $close-color: #fcba03;
 .notification__visible {
     right: 0;
 }
+
+.gameContent_finished {
+    opacity: 0.15;
+}
+
+.modal_wrapper {
+    z-index: 995;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    width: fit-content;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: #262626;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+    text-align: center;
+}
+
+.modal_header {
+    margin: 10px 0 30px 0;
+}
+
+.modal_footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    > :nth-child(2) {
+        margin: 0 20px;
+    }
+}
+
+.modal_word {
+    padding: 10px 20px;
+    text-transform: uppercase;
+}
+
+.modal_footer_divider {
+    width: 1px;
+    height: 30px;
+    background-color: white;
+}
+
+.modal_share {
+    padding: 10px 30px;
+    border-radius: 6px;
+    background-color: #00de64;
+    text-align: center;
+}

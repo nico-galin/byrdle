@@ -74,7 +74,7 @@ const Navigation = () => {
             </nav>
             <div className={`${styles.fullpageNav__container} ${!fullscreenNavOpen ? styles.fullpageNav__hidden : null}`}>
                 <ul className={styles.fullpageNav}>
-                    <li className={styles.link} onClick={() => goTo("/")}>Play</li>
+                    <li className={styles.link} onClick={() => goTo("/")}>Home</li>
                     {!!user ?
                         <>
                             <li className={styles.link} onClick={() => goTo(topTab === "dashboard" ? location : "/dashboard")}>Dashboard</li>

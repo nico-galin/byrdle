@@ -20,6 +20,16 @@
     padding: 12px 25px;
 }
 
+.gameCard__finished {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #00af4f;
+    border-radius: 10px;
+    padding: 12px 25px;
+}
+
 .gameCard:hover {
     cursor: pointer;
 }
@@ -54,3 +64,15 @@
 .watermark {
     margin: auto;
 }
+
+.check {
+    --height: 15px;
+    --width: 7px;
+    position: absolute;
+    right: 20px;
+    transform: rotate(45deg);
+    height: var(--height);
+    width: var(--width);
+    border-bottom: 3px solid white;
+    border-right: 3px solid white;
+  }
