@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocalData } from '../../contexts/localData';
 import { useWords } from '../../contexts/wordData';
-import { validWord } from '../../services/utils';
+import { getTimestamp, validWord } from '../../services/utils';
 import styles from './WordGrid.module.scss';
 
 const WordGrid = ({ len }) => {
@@ -67,7 +67,7 @@ const WordGrid = ({ len }) => {
     }
 
     const shareResults = () => {
-        let str = "Byrdle 2.8.2022\n\n";
+        let str = `Byrdle ${getTimestamp(".")}\n\n`;
         responseValues.forEach((row, rInd) => {
             row.forEach(tile => {
                 switch(tile) {
@@ -85,7 +85,7 @@ const WordGrid = ({ len }) => {
             str += "\n"
         })
         navigator.share({
-            text: str + "\nhttps://nico-galin.github.io/byrdle/"
+            text: str + "\nhttps://nicogalin.com/byrdle/"
         })
     }
 

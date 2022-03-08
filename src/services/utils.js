@@ -24,12 +24,12 @@ const validWord = (word) => {
     return getWordHelper(obj, word, word, 3);
 }
 
-const getTimestamp = () => {
+const getTimestamp = (delimiter) => {
     return new Date().toLocaleString("en-US", {
         year: "numeric",
         month: "2-digit",
         day: "2-digit",
-        timeZone: "America/Los_Angeles"}).replaceAll("/", "");
+        timeZone: "America/Los_Angeles"}).replaceAll("/", !!delimiter ? delimiter : "");
 }
 
 export {
